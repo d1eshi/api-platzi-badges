@@ -6,14 +6,14 @@ const cors = require('cors')
 // routes for link request
 const badge = require('./routes/badges.routes')
 
+// require .env with pass and users
+require('dotenv').config()
 // we using express in app
 const app = express()
-const port = process.env.PORT || 3005
+const port = process.env.PORT || 3008
 
 
 
-// requiere .env with pass and users
-require('dotenv').config()
 
 // connect to mongo db
 mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.xrklu.mongodb.net/badgesDB?retryWrites=true&w=majority`, { useNewUrlParser: true,  autoReconnect: true, useUnifiedTopology: true }, () => {

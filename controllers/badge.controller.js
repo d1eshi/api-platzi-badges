@@ -22,7 +22,7 @@ exports.badge_create = (req, res, next) => {
 }
 
 // add route to get all badgess
-exports.badge_get_all = (req, res) => {
+exports.badge_get_all = (req, res, next) => {
   Badge.find({}, (err, badge) => {
     if (err) return next(err)
     res.json(badge)
