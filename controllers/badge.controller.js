@@ -30,7 +30,7 @@ exports.badge_get_all = (req, res, next) => {
 }
 
 // add route to get badge by id
-exports.badge_get_by_id = (req, res) => {
+exports.badge_get_by_id = (req, res, next) => {
   Badge.findById(req.params.id, (err, badge) => {
     if (err) return next(err)
     res.json(badge)
