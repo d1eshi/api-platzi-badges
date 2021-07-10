@@ -3,6 +3,10 @@ const route = express.Router();
 
 const badge_controller = require('../controllers/badge.controller');
 
+route.get('/', (req, res) => {
+  res.send('<h1>Welcome to API Platzi Badges</h1>')
+})
+
 // post /badges/create
 route.post('/badges/create', badge_controller.badge_create);
 
@@ -18,4 +22,4 @@ route.put('/badges/:id', badge_controller.badge_update);
 // delete badge by id /badges/:id
 route.delete('/badges/:id', badge_controller.badge_delete);
 
-module.exports = route;
+module.exports = route

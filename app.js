@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const app = express()
 // cors to use with any place
 const cors = require('cors')
 
@@ -9,21 +10,17 @@ const badge = require('./routes/badges.routes')
 // require .env with pass and users
 require('dotenv').config()
 // we using express in app
-const app = express()
-const port = process.env.PORT || 3008
+const port = process.env.PORT || 3000
 
-
-
-
-// connect to mongo db
-mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.xrklu.mongodb.net/badgesDB?retryWrites=true&w=majority`, { useNewUrlParser: true,  autoReconnect: true, useUnifiedTopology: true }, () => {
-  console.log('Connected to database')
-})
 
 app.use(cors())
 app.use(express.json())
-app.use(express.urlencoded({ extended: true }));
-app.use("/", badge);
+
+// connect to mongo db
+mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.xrklu.mongodb.net/badgesDB?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
+  console.log('Connected to database')
+})
+app.use("/", badge)
 
 // waiting to connection to db
 app.listen(port, () => {
