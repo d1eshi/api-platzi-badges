@@ -8,6 +8,6 @@
     /badges
 
 - To GET user by ID
-	
-
+`
     /badges/:id
+`
